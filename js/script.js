@@ -1,3 +1,5 @@
+let stored = [];
+
 // Display data items for a fixed page
 function showPage(list, page) {
    // Creates number of cards to be displayed
@@ -40,7 +42,7 @@ function addPagination(list) {
    linkList.innerHTML = '';
 
    // Creates buttons for pages and displays them
-   for ( i = 0; i <= pages; i++) {
+   for ( i = 1; i <= pages; i++) {
       linkList.insertAdjacentHTML('beforeend', 
          `
             <li>
@@ -51,11 +53,11 @@ function addPagination(list) {
    }
 
    // Sets first page to active
-   let buttons = document.querySelectorAll('button')[1].className += 'active';
-
+   let buttons = document.querySelectorAll('button');
+   buttons[1].className += 'active'
    // Adds fuctionality to page buttons
    linkList.addEventListener('click', (e) => {
-         if (e.target = document.querySelector('button')) {
+         if (e.target.type === 'button') {
             document.querySelector('.active').className = '';
             e.target.className += 'active';
             showPage(data, e.target.innerHTML)
@@ -65,26 +67,31 @@ function addPagination(list) {
 
 
 // Add functionality to search bar
+const studentSearch = document.querySelector('.student-search')
 
-// function searchFunction () {
-//       //Gets info from search field and students   
-//       const value = document.querySelector('#search').value.toLowerCase()
-//       let studentItems = data
-      
-//       // Compare search field to student info
-//       for ( i = 0; i < data.length; i++ ) {
-//          if ( `${data[i].name.first} ${data[i].name.last}`.includes(value)) {
-//       }
-//    }
+function searchFunction () {
+      //Gets info from search field and students   
+      const value = document.querySelector('#search').value.toLowerCase()
+      let studentItems = data
+      stored = []
+      // Compare search field to student info
+      for ( i = 0; i < data.length; i++ ) {
+         if ( `${data[i].name.first} ${data[i].name.last}`.includes(value)) {
+           stored.push(data[i])
+         } 
+      }
+      showPage(stored, 1)
+      addPagination(stored)
+}
 
 
 // Functionality for Enter key
-const studentSearch = document.querySelector('.student-search')
-studentSearch.addEventListener('keypress', (e) => {
-   if ( e.key = 'Enter') {
-      searchFunction()
-   }
-})
+
+// studentSearch.addEventListener('keypress', (e) => {
+//    if ( e.key = 'Enter') {
+//       searchFunction()
+//    }
+// })
 
 // Functionality for search button
 studentSearch.addEventListener('click', (e) => {
