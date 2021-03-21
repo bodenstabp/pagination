@@ -43,7 +43,13 @@ header h2 {
 	margin-bottom: 25px;
 }
 
-
+.no-match {
+  display: none;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
 
 .student-search {
   display: flex;
