@@ -1,4 +1,5 @@
 let stored = [];
+const studentSearch = document.querySelector('.student-search')
 
 // Display data items for a fixed page
 function showPage(list, page) {
@@ -17,12 +18,12 @@ function showPage(list, page) {
             `
                <li class="student-item cf">
                   <div class="student-details">
-                     <img class="avatar" src=${data[i].picture.large} alt="Profile Picture">
-                     <h3>${data[i].name.first} ${data[i].name.last}</h3>
-                     <span class="email">${data[i].email}</span>
+                     <img class="avatar" src=${list[i].picture.large} alt="Profile Picture">
+                     <h3>${list[i].name.first} ${list[i].name.last}</h3>
+                     <span class="email">${list[i].email}</span>
                   </div>
                   <div class="joined-details">
-                     <span class="date">Joined ${data[i].registered.date}</span>
+                     <span class="date">Joined ${list[i].registered.date}</span>
                   </div>
                </li>
             `
@@ -55,6 +56,7 @@ function addPagination(list) {
    // Sets first page to active
    let buttons = document.querySelectorAll('button');
    buttons[1].className += 'active'
+
    // Adds fuctionality to page buttons
    linkList.addEventListener('click', (e) => {
          if (e.target.type === 'button') {
@@ -67,17 +69,16 @@ function addPagination(list) {
 
 
 // Add functionality to search bar
-const studentSearch = document.querySelector('.student-search')
+
 
 function searchFunction () {
       //Gets info from search field and students   
       const value = document.querySelector('#search').value.toLowerCase()
-      let studentItems = data
       stored = []
       // Compare search field to student info
       for ( i = 0; i < data.length; i++ ) {
          if ( `${data[i].name.first} ${data[i].name.last}`.includes(value)) {
-           stored.push(data[i])
+           stored.push(data[i]);
          } 
       }
       showPage(stored, 1)
@@ -87,11 +88,11 @@ function searchFunction () {
 
 // Functionality for Enter key
 
-// studentSearch.addEventListener('keypress', (e) => {
-//    if ( e.key = 'Enter') {
-//       searchFunction()
-//    }
-// })
+studentSearch.addEventListener('keypress', (e) => {
+   if ( e.key = 'Enter') {
+      searchFunction()
+   }
+})
 
 // Functionality for search button
 studentSearch.addEventListener('click', (e) => {
