@@ -1,5 +1,13 @@
+document.querySelector('header').innerHTML +=  
+   `<label for="search" class="student-search">
+   <span>Search by name</span>
+   <input id="search" placeholder="Search by name...">
+   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label>`;
+   
 let stored = [];
 const studentSearch = document.querySelector('.student-search')
+
 
 // Display data items for a fixed page
 function showPage(list, page) {
@@ -81,6 +89,7 @@ function searchFunction () {
            stored.push(data[i]);
          } 
       }
+      console.log(stored)
       showPage(stored, 1)
       addPagination(stored)
 }
@@ -88,11 +97,11 @@ function searchFunction () {
 
 // Functionality for Enter key
 
-studentSearch.addEventListener('keypress', (e) => {
-   if ( e.key = 'Enter') {
-      searchFunction()
-   }
-})
+// studentSearch.addEventListener('keypress', (e) => {
+//    if ( e.key = 'Enter') {
+//       searchFunction()
+//    }
+// })
 
 // Functionality for search button
 studentSearch.addEventListener('click', (e) => {
