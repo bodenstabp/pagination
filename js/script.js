@@ -84,7 +84,7 @@ function searchFunction () {
 
       // Compare search field to student info
       for ( i = 0; i < data.length; i++ ) {
-         if ( `${data[i].name.first} ${data[i].name.last}`.includes(value)) {
+         if ( `${data[i].name.first} ${data[i].name.last}`.toLowerCase().includes(value)) {
            stored.push(data[i]);
          } 
       }
