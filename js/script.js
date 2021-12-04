@@ -13,7 +13,7 @@ const studentSearch = document.querySelector('.student-search');
 const searchButton = document.querySelector('header button');
 const studentList = document.querySelector('.student-list');
 const noMatch = document.querySelector('.no-match');
-const itemsPerPage = 8;
+const itemsPerPage = 4;
 
 // Display data items for a fixed page
 function showPage(list, page) {
