@@ -24,7 +24,7 @@ function showPage(list, page) {
   // Selects HTML Element that will have cards displayed and empties it
   studentList.innerHTML = '';
 
-  // Takes data and maps to page on cards
+  // Maps data to cards on page
   for (let i = 0; i < list.length; i++) {
     if (i >= firstIndex && i < lastIndex) {
       studentList.insertAdjacentHTML(
